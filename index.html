@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -7,51 +6,70 @@
 <title>家庭暑期打卡</title>
 <style>
   body {
-    font-family: sans-serif;
-    background: #f5f5f5;
+    font-family: "微软雅黑", sans-serif;
+    background: linear-gradient(120deg, #fdfbfb, #ebedee);
     margin: 0;
     padding: 10px;
   }
   h1 {
     text-align: center;
-    color: #333;
+    color: #2c3e50;
+    margin-top: 20px;
+    font-size: 24px;
   }
   .person {
     background: #fff;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 0 3px #ccc;
+    margin: 15px 5px;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+  }
+  .person:hover {
+    transform: translateY(-3px);
+  }
+  .person h2 {
+    margin: 0 0 10px 0;
+    color: #34495e;
+    font-size: 20px;
   }
   .task {
     display: flex;
     justify-content: space-between;
-    padding: 5px 0;
+    align-items: center;
+    padding: 8px 0;
     border-bottom: 1px solid #eee;
+    font-size: 16px;
   }
   .task:last-child {
     border-bottom: none;
   }
   button {
-    padding: 5px 10px;
+    padding: 5px 12px;
     border: none;
-    border-radius: 5px;
-    background: #ccc;
+    border-radius: 20px;
+    background: #bdc3c7;
     color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s;
   }
   .done {
-    background: #4caf50;
+    background: #27ae60 !important;
   }
   .reset-btn {
     display: block;
-    margin: 20px auto;
-    background: #f44336;
+    margin: 25px auto;
+    background: #e74c3c;
+    font-size: 16px;
+    padding: 8px 20px;
+    border-radius: 25px;
   }
 </style>
 </head>
 <body>
 
-<h1>暑期打卡</h1>
+<h1>🌟 家庭暑期打卡 🌟</h1>
 
 <div id="app"></div>
 
@@ -62,14 +80,12 @@ const kids = ["爸爸", "妈妈", "圣淇", "誉馨"];
 const tasks = ["学习", "运动", "拓展", "自理", "娱乐"];
 const app = document.getElementById("app");
 
-// 获取今天日期字符串
 function getTodayKey() {
   const today = new Date();
   return `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`;
 }
 const todayKey = getTodayKey();
 
-// 初始化页面
 function init() {
   app.innerHTML = "";
   kids.forEach((kid, i) => {
@@ -100,7 +116,6 @@ function init() {
   });
 }
 
-// 切换状态
 function toggle(btn) {
   if (btn.classList.contains("done")) {
     btn.classList.remove("done");
@@ -113,7 +128,6 @@ function toggle(btn) {
   }
 }
 
-// 重置
 function resetAll() {
   if(confirm("确定要清空今天的记录吗？")) {
     Object.keys(localStorage).forEach(key => {
@@ -123,7 +137,6 @@ function resetAll() {
   }
 }
 
-// 初始化
 init();
 </script>
 
